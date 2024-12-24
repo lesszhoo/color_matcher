@@ -15,8 +15,8 @@ export function ColorInput({ onSubmit }: ColorInputProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-end space-x-4">
-      <div className="flex-1">
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
         <label className="block text-sm font-medium text-gray-700">
           输入颜色值
         </label>
@@ -25,7 +25,7 @@ export function ColorInput({ onSubmit }: ColorInputProps) {
             type="text"
             value={color}
             onChange={(e) => setColor(e.target.value)}
-            className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="block flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2"
             placeholder="#FF5733 or rgb(255, 87, 51)"
           />
           <input
@@ -34,16 +34,16 @@ export function ColorInput({ onSubmit }: ColorInputProps) {
             max="100"
             value={count}
             onChange={(e) => setCount(parseInt(e.target.value, 10))}
-            className="w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2"
           />
+          <button
+            type="submit"
+            className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            匹配颜色
+          </button>
         </div>
       </div>
-      <button
-        type="submit"
-        className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-      >
-        匹配颜色
-      </button>
     </form>
   );
 }
