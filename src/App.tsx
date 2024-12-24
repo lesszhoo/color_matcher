@@ -4,22 +4,21 @@ import { ColorInput } from './components/ColorInput';
 import { ColorResult } from './components/ColorResult';
 import { ColorTable } from './components/ColorTable';
 import { ViewToggle } from './components/ViewToggle';
-import { useColorLibrary } from './hooks/useColorLibrary';
 import { parseColor, calculateColorDistance, calculateSimilarity } from './utils/colorConversion';
 import { MatchResult, ViewMode } from './types/color';
+import { colorDatabase } from './data/colorDatabase';
 
 function App() {
   const [results, setResults] = useState<MatchResult[]>([]);
   const [error, setError] = useState<string>('');
   const [viewMode, setViewMode] = useState<ViewMode>('card');
-  const { colors } = useColorLibrary();
 
   const handleColorMatch = (inputColor: string, count: number) => {
     try {
       setError('');
       const targetRgb = parseColor(inputColor);
       
-      const matches = colors
+      const matches = colorDatabase
         .map(color => ({
           ...color,
           distance: calculateColorDistance(targetRgb, color.rgb),
